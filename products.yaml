@@ -1,0 +1,28 @@
+# Productos a vigilar. Edita esta lista a mano.
+#
+# name:              nombre legible (aparece en la notificación)
+# url:               URL de la página del producto en walmart.com.mx (/ip/...)
+# offer_filter:      "any" | "walmart_fulfilled" | "seller_fulfilled"
+#                      walmart_fulfilled = "Vendido por The Fragrance, enviado por Walmart"
+#                      seller_fulfilled  = "Vendido y enviado por The Fragrance"
+# notify_price_drop: true para avisar también cuando baje el precio
+#
+# Solo cuentan las ofertas de este vendedor. Si el producto está disponible pero
+# lo vende Walmart u otra tienda, se considera NO disponible (no notifica).
+seller_name: "The Fragrance"
+
+products:
+  - name: "Goodgirl 80 ml EDP Spray"
+    url: "https://www.walmart.com.mx/ip/good-girl-80-ml-edp-spray/00046064599687"
+    offer_filter: "any"
+    notify_price_drop: false
+
+  - name: "Perfume Carolina Herrera Very Good Girl Eau de Perfume 80 ml"
+    url: "https://www.walmart.com.mx/ip/perfume-carolina-herrera-very-good-girl-eau-de-perfume-80-ml/00841106199575"
+    offer_filter: "walmart_fulfilled"
+    notify_price_drop: true
+
+  - name: "Sauvage Parfum 100 ml EDP Spray Christian Dior Aromatica Fougere 2015"
+    url: "https://www.walmart.com.mx/ip/sauvage-parfum-100-ml-edp-spray-christian-dior-aromatica-fougere-2015/00070102259402"
+    offer_filter: "walmart_fulfilled"
+    notify_price_drop: true

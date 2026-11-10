@@ -1,0 +1,35 @@
+name: analista-de-disponibilidad · probe
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          python -m playwright install --with-deps chromium
+
+      - name: Run probe
+        run: python scripts/analista_de_disponibilidad_probe.py --products products.yaml --out probe_output
+
+      - name: Upload probe results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: analista-de-disponibilidad-probe
+          path: probe_output/
+          retention-days: 14
